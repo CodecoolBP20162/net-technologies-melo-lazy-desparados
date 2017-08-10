@@ -29,25 +29,7 @@ namespace meLo
 
         
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnPlay1_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         private void UpdateFolderBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -90,6 +72,21 @@ namespace meLo
                 listBoxItem.Content = filinfo.Name;
                 FolderViewBox.Items.Add(listBoxItem);
             }
+        }
+
+        private void btnPlay1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnFolder1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnStop1_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
