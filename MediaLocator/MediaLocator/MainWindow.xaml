@@ -12,16 +12,16 @@
         <Slider x:Name="Volume" HorizontalAlignment="Left" Margin="636,482,0,0" VerticalAlignment="Top" Width="124" ValueChanged="slider_vol_ValueChanged"/>
         <Label Content="Volume" HorizontalAlignment="Left" Margin="548,471,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.466,-0.279" Width="83" FontSize="20"/>
         <Button x:Name="btnPlay1"  HorizontalAlignment="Left" Margin="353,447,0,0" VerticalAlignment="Top" Width="75" Height="62" Click="btnPlay1_Click">
-            <Image x:Name="btnPlay" Source="C:\Users\AbelVaradi\Source\Repos\net-technologies-melo-lazy-desparados\pictures\play.png" RenderTransformOrigin="0.456,1.231"/>
+            <Image x:Name="btnPlay" Source="C:\Users\Judit\Source\Repos\net-technologies-melo-lazy-desparados\pictures\play.png" RenderTransformOrigin="0.456,1.231"/>
         </Button>
         <Button  x:Name="btnPause1" HorizontalAlignment="Left" Margin="441,471,0,0" VerticalAlignment="Top" Width="51" Height="38" Click="btnPlay1_Click">
-            <Image x:Name="btnPause" Source="C:\Users\AbelVaradi\Source\Repos\net-technologies-melo-lazy-desparados\pictures\pause.png"></Image>
+            <Image x:Name="btnPause" Source="C:\Users\Judit\Source\Repos\net-technologies-melo-lazy-desparados\pictures\pause.png"></Image>
         </Button>
         <Button  x:Name="btnStop1" HorizontalAlignment="Left" Margin="286,472,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="1.471,2.555" Height="37" Click="btnStop1_Click">
-            <Image x:Name="btnStop" Source="C:\Users\AbelVaradi\Source\Repos\net-technologies-melo-lazy-desparados\pictures\stop.png"></Image>
+            <Image x:Name="btnStop" Source="C:\Users\Judit\Source\Repos\net-technologies-melo-lazy-desparados\pictures\stop.png"></Image>
         </Button>
         <Button  x:Name="btnFolder1" HorizontalAlignment="Left" Margin="21,469,0,0" VerticalAlignment="Top" Width="52" Height="39" Click="btnFolder1_Click">
-            <Image x:Name="btnFolder" Source="C:\Users\AbelVaradi\Source\Repos\net-technologies-melo-lazy-desparados\pictures\folder.png"></Image>
+            <Image x:Name="btnFolder" Source="C:\Users\Judit\Source\Repos\net-technologies-melo-lazy-desparados\pictures\folder.png"></Image>
         </Button>
         <TextBox x:Name="DirectoryPathTextBox" HorizontalAlignment="Left" Height="23" Margin="788,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
         <ListBox x:Name="FolderViewBox" HorizontalAlignment="Left" Height="304" Margin="788,60,0,0" VerticalAlignment="Top" Width="287"/>
