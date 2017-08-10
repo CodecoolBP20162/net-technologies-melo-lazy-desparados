@@ -8,8 +8,8 @@
         Title="MainWindow" Height="690.46" Width="1295.74">
     <Grid Margin="0,0,-8,1">
         <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Left" Height="304" Margin="10,60,0,0" VerticalAlignment="Top" Width="763" LoadedBehavior="Manual"/>
-        <Slider x:Name="mediaSlider" HorizontalAlignment="Left" Margin="10,381,0,0" VerticalAlignment="Top" Width="763" Height="48"/>
-        <Slider HorizontalAlignment="Left" Margin="636,482,0,0" VerticalAlignment="Top" Width="124"/>
+        <Slider x:Name="mediaSlider" HorizontalAlignment="Left" Margin="10,381,0,0" VerticalAlignment="Top" Width="763" Height="48" ValueChanged="mediaSlider_ValueChanged"/>
+        <Slider x:Name="Volume" HorizontalAlignment="Left" Margin="636,482,0,0" VerticalAlignment="Top" Width="124" ValueChanged="slider_vol_ValueChanged"/>
         <Label Content="Volume" HorizontalAlignment="Left" Margin="548,471,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.466,-0.279" Width="83" FontSize="20"/>
         <Button x:Name="btnPlay1"  HorizontalAlignment="Left" Margin="353,447,0,0" VerticalAlignment="Top" Width="75" Height="62" Click="btnPlay1_Click">
             <Image x:Name="btnPlay" Source="E:\net-technologies-melo-lazy-desparados\pictures\play.png" RenderTransformOrigin="0.456,1.231"/>
@@ -25,7 +25,7 @@
         </Button>
         <TextBox HorizontalAlignment="Left" Height="27" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="763"/>
         <ListBox HorizontalAlignment="Left" Height="304" Margin="788,60,0,0" VerticalAlignment="Top" Width="287"/>
-
+        <Image Source="C:\Users\Szilniczky\Pictures\DESPERADOS.png" Margin="778,364,157,5"/>
 
 
 

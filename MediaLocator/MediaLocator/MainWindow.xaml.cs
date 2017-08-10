@@ -64,5 +64,15 @@ namespace meLo
         {
             mediaSlider.Value = mediaPlayer.Position.TotalSeconds;
         }
+        
+        private void mediaSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            mediaPlayer.Position = TimeSpan.FromSeconds(mediaSlider.Value);
+        }
+
+        private void slider_vol_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            mediaPlayer.Volume = (double)Volume.Value;
+        }
     }
 }
