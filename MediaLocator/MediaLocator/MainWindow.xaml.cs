@@ -1,4 +1,5 @@
-﻿using FileWatcher;
+using Microsoft.Win32;
+using FileWatcher;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,9 +28,14 @@ namespace meLo
             InitializeComponent();
         }
 
-        
+       
 
-        
+
+        private void btnPlay1_Click(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Play();
+        }
+   
 
         private void UpdateFolderBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -74,19 +80,47 @@ namespace meLo
             }
         }
 
-        private void btnPlay1_Click(object sender, RoutedEventArgs e)
+      
+        private void btnStop1_Click(object sender, RoutedEventArgs e)
         {
+            mediaPlayer.Stop();
+        }
 
+        private void btnPause1_Click(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Pause();
         }
 
         private void btnFolder1_Click(object sender, RoutedEventArgs e)
         {
+            OpenFileDialog ofd;
+            ofd = new OpenFileDialog();
+            ofd.AddExtension = true;
+            ofd.DefaultExt = "*.*";
+            ofd.Filter = "Media Files (*.*)|*.*";
+            ofd.ShowDialog();
 
+            try { mediaPlayer.Source = new Uri(ofd.FileName); }
+            catch { new NullReferenceException("error"); }
+
+            System.Windows.Threading.DispatcherTimer dispatchertimer = new System.Windows.Threading.DispatcherTimer();
+            dispatchertimer.Tick += new EventHandler(timer_Tick);
+            dispatchertimer.Interval = new TimeSpan(0, 0, 1);
+            dispatchertimer.Start();
+        }
+        void timer_Tick(object sender, EventArgs e)
+        {
+            mediaSlider.Value = mediaPlayer.Position.TotalSeconds;
+        }
+        
+        private void mediaSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            mediaPlayer.Position = TimeSpan.FromSeconds(mediaSlider.Value);
         }
 
-        private void btnStop1_Click(object sender, RoutedEventArgs e)
+        private void slider_vol_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-
+            mediaPlayer.Volume = (double)Volume.Value;
         }
     }
 }
