@@ -66,6 +66,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+	<Compile Include="Filewatcher.cs">
+      <DependentUpon>Filewatcher.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+	<Compile Include="FileManager.cs">
+      <DependentUpon>FileManager.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
