@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,26 +26,43 @@ namespace meLo
             InitializeComponent();
         }
 
-        
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
 
         private void btnPlay1_Click(object sender, RoutedEventArgs e)
         {
+            mediaPlayer.Play();
+        }
 
+        private void btnStop1_Click(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Stop();
+        }
+
+        private void btnPause1_Click(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Pause();
+        }
+
+        private void btnFolder1_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd;
+            ofd = new OpenFileDialog();
+            ofd.AddExtension = true;
+            ofd.DefaultExt = "*.*";
+            ofd.Filter = "Media Files (*.*)|*.*";
+            ofd.ShowDialog();
+
+            try { mediaPlayer.Source = new Uri(ofd.FileName); }
+            catch { new NullReferenceException("error"); }
+
+            System.Windows.Threading.DispatcherTimer dispatchertimer = new System.Windows.Threading.DispatcherTimer();
+            dispatchertimer.Tick += new EventHandler(timer_Tick);
+            dispatchertimer.Interval = new TimeSpan(0, 0, 1);
+            dispatchertimer.Start();
+        }
+        void timer_Tick(object sender, EventArgs e)
+        {
+            mediaSlider.Value = mediaPlayer.Position.TotalSeconds;
         }
     }
 }
