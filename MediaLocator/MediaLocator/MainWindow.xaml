@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:meLo"
         mc:Ignorable="d"
         Title="MainWindow" Height="660.46" Width="1295.74">
-    <Grid Margin="0,0,-8,1">
+    <Grid Margin="0,0,2,-21">
         <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Left" Height="354" Margin="10,10,0,0" VerticalAlignment="Top" Width="763"/>
         <Slider x:Name="mediaSlider" HorizontalAlignment="Left" Margin="10,381,0,0" VerticalAlignment="Top" Width="763" Height="48"/>
         <Slider HorizontalAlignment="Left" Margin="636,482,0,0" VerticalAlignment="Top" Width="124"/>
@@ -23,7 +23,7 @@
         <Button  HorizontalAlignment="Left" Margin="21,469,0,0" VerticalAlignment="Top" Width="52" Height="39" Click="Button_Click_3">
             <Image Source="E:\meLo\folder.png"></Image>
         </Button>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="788,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
+        <TextBox x:Name="DirectoryPathTextBox" HorizontalAlignment="Left" Height="23" Margin="788,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
         <ListBox HorizontalAlignment="Left" Height="304" Margin="788,60,0,0" VerticalAlignment="Top" Width="287"/>
 
 
