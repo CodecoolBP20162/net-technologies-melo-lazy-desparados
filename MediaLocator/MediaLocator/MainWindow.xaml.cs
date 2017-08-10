@@ -1,5 +1,7 @@
-﻿using System;
+﻿using FileWatcher;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +47,49 @@ namespace meLo
         private void btnPlay1_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void UpdateFolderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FileManager.jpegList.Clear();
+            FileManager.jpgList.Clear();
+            FileManager.mp3List.Clear();
+            FileManager.mp4List.Clear();
+            FileManager.pngList.Clear();
+            FolderViewBox.Items.Clear();
+            DirectoryInfo temporaryDirInfo = new  DirectoryInfo(DirectoryPathTextBox.Text);
+            FileManager.recursiveFileSearch(temporaryDirInfo);
+            CreateListBoxItemsForFiles();
+        }
+
+        private void CreateListBoxItemsForFiles()
+        {
+            foreach (FileInfo filinfo in FileManager.mp3List)
+            {
+                ListBoxItem listBoxItem = new ListBoxItem();
+                listBoxItem.Content = filinfo.Name;
+
+                FolderViewBox.Items.Add(listBoxItem);
+            }
+            foreach (FileInfo filinfo in FileManager.mp4List)
+            {
+                ListBoxItem listBoxItem = new ListBoxItem();
+                listBoxItem.Content = filinfo.Name;
+                FolderViewBox.Items.Add(listBoxItem);
+            }
+            foreach (FileInfo filinfo in FileManager.jpgList)
+            {
+                ListBoxItem listBoxItem = new ListBoxItem();
+                listBoxItem.Content = filinfo.Name;
+
+                FolderViewBox.Items.Add(listBoxItem);
+            }
+            foreach (FileInfo filinfo in FileManager.jpegList)
+            {
+                ListBoxItem listBoxItem = new ListBoxItem();
+                listBoxItem.Content = filinfo.Name;
+                FolderViewBox.Items.Add(listBoxItem);
+            }
         }
     }
 }
