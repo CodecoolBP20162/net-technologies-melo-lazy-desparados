@@ -1,12 +1,33 @@
-﻿<Window x:Class="MediaLocator.MainWindow"
+﻿<Window x:Class="meLo.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MediaLocator"
+        xmlns:local="clr-namespace:meLo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="MainWindow" Height="660.46" Width="1295.74">
+    <Grid Margin="0,0,-8,1">
+        <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Left" Height="354" Margin="10,10,0,0" VerticalAlignment="Top" Width="763"/>
+        <Slider x:Name="mediaSlider" HorizontalAlignment="Left" Margin="10,381,0,0" VerticalAlignment="Top" Width="763" Height="48"/>
+        <Slider HorizontalAlignment="Left" Margin="636,482,0,0" VerticalAlignment="Top" Width="124"/>
+        <Label Content="Volume" HorizontalAlignment="Left" Margin="548,471,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.466,-0.279" Width="83" FontSize="20"/>
+        <Button x:Name="btnPlay1"  HorizontalAlignment="Left" Margin="353,447,0,0" VerticalAlignment="Top" Width="75" Height="62" Click="btnPlay1_Click">
+            <Image x:Name="btnPlay" Source="E:\net-technologies-melo-lazy-desparados\play.png" RenderTransformOrigin="0.456,1.231"/>
+        </Button>
+        <Button  HorizontalAlignment="Left" Margin="441,471,0,0" VerticalAlignment="Top" Width="51" Height="38" Click="Button_Click_1">
+            <Image Source="E:\meLo\pause.png"></Image>
+        </Button>
+        <Button  HorizontalAlignment="Left" Margin="286,472,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="1.471,2.555" Height="37" Click="Button_Click_2">
+            <Image Source="E:\meLo\stop.png"></Image>
+        </Button>
+        <Button  HorizontalAlignment="Left" Margin="21,469,0,0" VerticalAlignment="Top" Width="52" Height="39" Click="Button_Click_3">
+            <Image Source="E:\meLo\folder.png"></Image>
+        </Button>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="788,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
+        <ListBox HorizontalAlignment="Left" Height="304" Margin="788,60,0,0" VerticalAlignment="Top" Width="287"/>
+
+
+
+
     </Grid>
 </Window>

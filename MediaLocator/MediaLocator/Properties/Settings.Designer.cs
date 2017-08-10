@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MediaLocator.Properties
+namespace meLo.Properties
 {
 
 
