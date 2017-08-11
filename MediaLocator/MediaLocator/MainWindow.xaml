@@ -6,25 +6,22 @@
         xmlns:local="clr-namespace:meLo"
         mc:Ignorable="d"
         Title="MainWindow" Height="690.46" Width="1295.74">
-    <Grid Margin="0,0,-8,1">
-        <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Left" Height="304" Margin="10,60,0,0" VerticalAlignment="Top" Width="763" LoadedBehavior="Manual"/>
-        <Slider x:Name="mediaSlider" HorizontalAlignment="Left" Margin="10,381,0,0" VerticalAlignment="Top" Width="763" Height="48" ValueChanged="mediaSlider_ValueChanged"/>
-        <Slider x:Name="Volume" HorizontalAlignment="Left" Margin="636,482,0,0" VerticalAlignment="Top" Width="124" ValueChanged="slider_vol_ValueChanged"/>
-        <Label Content="Volume" HorizontalAlignment="Left" Margin="548,471,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.466,-0.279" Width="83" FontSize="20"/>
-        <Button x:Name="btnPlay1"  HorizontalAlignment="Left" Margin="353,447,0,0" VerticalAlignment="Top" Width="75" Height="62" Click="btnPlay1_Click">
-        </Button>
-        <Button  x:Name="btnPause1" HorizontalAlignment="Left" Margin="441,471,0,0" VerticalAlignment="Top" Width="51" Height="38" Click="btnPlay1_Click">
-        </Button>
-        <Button  x:Name="btnStop1" HorizontalAlignment="Left" Margin="286,472,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="1.471,2.555" Height="37" Click="btnStop1_Click">
-        </Button>
-        <Button  x:Name="btnFolder1" HorizontalAlignment="Left" Margin="21,469,0,0" VerticalAlignment="Top" Width="52" Height="39" Click="btnFolder1_Click">
-            
-        </Button>
-        <TextBox x:Name="DirectoryPathTextBox" HorizontalAlignment="Left" Height="23" Margin="788,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
-        <ListBox x:Name="FolderViewBox" HorizontalAlignment="Left" Height="304" Margin="788,60,0,0" VerticalAlignment="Top" Width="287"/>
-        <Button x:Name="UpdateFolderBtn" Content="Update" HorizontalAlignment="Left" Margin="1108,10,0,0" VerticalAlignment="Top" Width="75" Click="UpdateFolderBtn_Click"/>
+       <Grid Margin="0,0,2,1" Background="#FFBCD0E4">
+            <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Left" Height="304" Margin="10,60,0,0" VerticalAlignment="Top" Width="535" LoadedBehavior="Manual" MediaOpened="mediaPlayer_MediaOpened" OpacityMask="#FFE64747"/>
+            <Slider x:Name="mediaSlider" HorizontalAlignment="Left" Margin="10,381,0,0" VerticalAlignment="Top" Width="542" Height="48" ValueChanged="mediaSlider_ValueChanged"/>
+            <Slider x:Name="Volume" HorizontalAlignment="Left" Margin="428,482,0,0" VerticalAlignment="Top" Width="124" ValueChanged="slider_vol_ValueChanged"/>
+            <Label Content="Volume" HorizontalAlignment="Left" Margin="344,471,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.466,-0.279" Width="83" FontSize="20"/>
+            <Button x:Name="btnPlay1"  HorizontalAlignment="Left" Margin="179,447,0,0" VerticalAlignment="Top" Width="75" Height="62" Click="btnPlay1_Click">
+                           </Button>
+            <Button  x:Name="btnPause1" HorizontalAlignment="Left" Margin="264,471,0,0" VerticalAlignment="Top" Width="51" Height="38" Click="btnPause1_Click">
+                          </Button>
+            <Button  x:Name="btnStop1" HorizontalAlignment="Left" Margin="118,472,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="1.471,2.555" Height="37" Click="btnStop1_Click">
+                           </Button>
+            <Button  x:Name="btnFolder1" HorizontalAlignment="Left" Margin="21,473,0,0" VerticalAlignment="Top" Width="52" Height="36" Click="btnFolder1_Click">
+                         </Button>
+            <TextBox x:Name="DirectoryPathTextBox" HorizontalAlignment="Left" Height="23" Margin="788,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
+            <ListBox x:Name="FolderViewBox" HorizontalAlignment="Left" Height="304" Margin="788,60,0,0" VerticalAlignment="Top" Width="287"/>
+            <Button x:Name="UpdateFolderBtn" Content="Update" HorizontalAlignment="Left" Margin="1108,10,0,0" VerticalAlignment="Top" Width="75" Click="UpdateFolderBtn_Click"/>
 
-
-
-    </Grid>
+        </Grid>
 </Window>

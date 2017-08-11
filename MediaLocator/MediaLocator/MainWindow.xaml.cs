@@ -30,6 +30,9 @@ namespace meLo
         {
             InitializeComponent();
             CreateImagesForButtons();
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(500);
+            timer.Tick += new EventHandler(timer_Tick);
         }
 
        private void CreateImagesForButtons()
