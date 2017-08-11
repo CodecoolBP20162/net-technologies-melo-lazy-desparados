@@ -22,6 +22,7 @@
             <TextBox x:Name="DirectoryPathTextBox" HorizontalAlignment="Left" Height="23" Margin="788,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
             <ListBox x:Name="FolderViewBox" HorizontalAlignment="Left" Height="304" Margin="788,60,0,0" VerticalAlignment="Top" Width="287"/>
             <Button x:Name="UpdateFolderBtn" Content="Update" HorizontalAlignment="Left" Margin="1108,10,0,0" VerticalAlignment="Top" Width="75" Click="UpdateFolderBtn_Click"/>
+        <Button x:Name="btnOpenPic" Content="Picture" HorizontalAlignment="Left" Margin="1108,60,0,0" VerticalAlignment="Top" Width="75" Click="btnOpenPic_Click"/>
 
-        </Grid>
+    </Grid>
 </Window>

@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Reflection;
 using System.Windows.Threading;
+using MediaLocator;
 
 namespace meLo
 {
@@ -164,6 +165,20 @@ namespace meLo
             TimeSpan ts = mediaPlayer.NaturalDuration.TimeSpan;
             mediaSlider.Maximum = ts.TotalSeconds;
             timer.Start();
+        }
+
+        private void btnOpenPic_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd;
+            ofd = new OpenFileDialog();
+            ofd.AddExtension = true;
+            ofd.DefaultExt = "*.*";
+            ofd.Filter = "Media Files (*.*)|*.*";
+            ofd.ShowDialog();
+
+            PictureView pv = new PictureView();
+            pv.imagebox.Source = new BitmapImage(new Uri(ofd.FileName));
+            pv.ShowDialog();
         }
     }
 }
