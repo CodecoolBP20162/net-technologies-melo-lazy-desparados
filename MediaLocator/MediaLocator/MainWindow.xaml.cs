@@ -131,6 +131,10 @@ namespace meLo
             ofd.DefaultExt = "*.*";
             ofd.Filter = "Media Files (*.*)|*.*";
             ofd.ShowDialog();
+            string fullPath = ofd.FileName;
+            string directoryPath = System.IO.Path.GetDirectoryName(fullPath);
+            DirectoryPathTextBox.Text = directoryPath;
+
 
             try { mediaPlayer.Source = new Uri(ofd.FileName); }
             catch { new NullReferenceException("error"); }
