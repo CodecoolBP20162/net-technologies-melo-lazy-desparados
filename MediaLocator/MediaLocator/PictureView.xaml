@@ -1,0 +1,12 @@
+﻿<Window x:Class="MediaLocator.PictureView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MediaLocator"
+        mc:Ignorable="d"
+        Title="PictureView" Height="727.862" Width="1052.579">
+    <Grid Margin="0,0,2,-21">
+        <Image x:Name="imagebox" HorizontalAlignment="Left" Height="698" Margin="0,10,0,0" VerticalAlignment="Top" Width="1033"/>
+    </Grid>
+</Window>
