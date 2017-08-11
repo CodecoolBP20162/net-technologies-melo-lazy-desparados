@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Reflection;
 
 namespace meLo
 {
@@ -26,9 +27,35 @@ namespace meLo
         public MainWindow()
         {
             InitializeComponent();
+            CreateImagesForButtons();
         }
 
-       
+       private void CreateImagesForButtons()
+        {
+            string pathPlay = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"..\..\pictures\play.png");
+            btnPlay1.Content = new Image
+            {
+                Source = new BitmapImage(new Uri(pathPlay))
+            };
+
+            string pathStop = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"..\..\pictures\stop.png");
+            btnStop1.Content = new Image
+            {
+                Source = new BitmapImage(new Uri(pathStop))
+            };
+
+            string pathPause = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"..\..\pictures\pause.png");
+            btnPause1.Content = new Image
+            {
+                Source = new BitmapImage(new Uri(pathPause))
+            };
+
+            string pathFolder = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"..\..\pictures\folder.png");
+            btnFolder1.Content = new Image
+            {
+                Source = new BitmapImage(new Uri(pathFolder))
+            };
+        }
 
 
         private void btnPlay1_Click(object sender, RoutedEventArgs e)
