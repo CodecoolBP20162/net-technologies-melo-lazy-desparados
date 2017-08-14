@@ -8,5 +8,7 @@ namespace MediaLocator
 {
     class edit
     {
+        public string FileName;
+        public ulong AudioTimeOffsetTotalMilliseconds = 0;
     }
 }
