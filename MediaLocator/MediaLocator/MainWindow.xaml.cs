@@ -166,7 +166,7 @@ namespace meLo
             mediaSlider.Maximum = ts.TotalSeconds;
             timer.Start();
         }
-
+        //
         private void btnOpenPic_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd;
