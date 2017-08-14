@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using System.Reflection;
 using System.Windows.Threading;
 
+
 namespace meLo
 {
     /// <summary>
@@ -34,6 +35,10 @@ namespace meLo
             timer.Interval = TimeSpan.FromMilliseconds(500);
             timer.Tick += new EventHandler(timer_Tick);
         }
+
+        
+
+        
 
        private void CreateImagesForButtons()
         {
@@ -60,6 +65,16 @@ namespace meLo
             {
                 Source = new BitmapImage(new Uri(pathFolder))
             };
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Split();
+        }
+
+        private void Split()
+        {
+            AudioSplitOutput asp = new AudioSplitOutput();
         }
 
 
@@ -161,5 +176,7 @@ namespace meLo
             mediaSlider.Maximum = ts.TotalSeconds;
             timer.Start();
         }
+
+        
     }
 }

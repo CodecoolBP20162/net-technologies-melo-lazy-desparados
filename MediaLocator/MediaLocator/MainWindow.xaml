@@ -20,8 +20,9 @@
             <Button  x:Name="btnFolder1" HorizontalAlignment="Left" Margin="21,473,0,0" VerticalAlignment="Top" Width="52" Height="36" Click="btnFolder1_Click">
                          </Button>
             <TextBox x:Name="DirectoryPathTextBox" HorizontalAlignment="Left" Height="23" Margin="566,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
-            <ListBox x:Name="FolderViewBox" HorizontalAlignment="Left" Height="304" Margin="566,60,0,0" VerticalAlignment="Top" Width="287"/>
+            <ListBox x:Name="FolderViewBox" HorizontalAlignment="Left" Height="304" Margin="566,59,0,0" VerticalAlignment="Top" Width="287"/>
             <Button x:Name="UpdateFolderBtn" Content="Update" HorizontalAlignment="Left" Margin="868,12,0,0" VerticalAlignment="Top" Width="75" Click="UpdateFolderBtn_Click"/>
+        <Button x:Name="btnEdit" Content="Edit-mp3" HorizontalAlignment="Left" Margin="868,60,0,0" VerticalAlignment="Top" Width="75" Click="btnEdit_Click"/>
 
-        </Grid>
+    </Grid>
 </Window>
