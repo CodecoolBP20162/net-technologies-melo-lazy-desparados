@@ -167,6 +167,7 @@ namespace meLo
             timer.Start();
         }
         //
+        //
         private void btnOpenPic_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd;
