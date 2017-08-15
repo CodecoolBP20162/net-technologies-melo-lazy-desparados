@@ -40,7 +40,7 @@ namespace meLo
 
         
 
-       private void CreateImagesForButtons()
+        private void CreateImagesForButtons()
         {
             string pathPlay = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"..\..\pictures\play.png");
             btnPlay1.Content = new Image
@@ -82,7 +82,7 @@ namespace meLo
         {
             mediaPlayer.Play();
         }
-   
+        
 
         private void UpdateFolderBtn_Click(object sender, RoutedEventArgs e)
         {
