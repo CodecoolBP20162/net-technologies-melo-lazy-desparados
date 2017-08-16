@@ -1,6 +1,4 @@
 using Microsoft.Win32;
-using FileWatcher;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -18,6 +16,7 @@ using System.Windows.Shapes;
 using System.Reflection;
 using System.Windows.Threading;
 using MediaLocator;
+using System;
 
 namespace meLo
 {
@@ -31,19 +30,11 @@ namespace meLo
         {
             InitializeComponent();
             CreateImagesForButtons();
+            DatabaseHandler.AddToDatabase();
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(500);
             timer.Tick += new EventHandler(timer_Tick);
 
-            using (var ctx = new MediaLocator.MedialocatorContext())
-            {
-                Folder newfolder = new Folder() { FolderName = "newFolder" };
-                Audio newaudio = new Audio() { FileName = "newAudio", Folder = newfolder, Size = 10 };
-                newfolder.Audios.Add(newaudio);
-                ctx.Audios.Add(newaudio);
-                ctx.Folders.Add(newfolder);
-                ctx.SaveChanges();
-            }
         }
 
        private void CreateImagesForButtons()

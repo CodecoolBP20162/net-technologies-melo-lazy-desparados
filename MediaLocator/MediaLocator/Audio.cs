@@ -15,8 +15,6 @@ namespace MediaLocator
         public int AudioID { get; set; }
         public string FileName { get; set; }
         public string FilePath { get; set; }
-        public DateTime? SavedAt { get; set; }
-        public byte[] Photo { get; set; }
         public decimal Long { get; set; }
         public decimal Size { get; set; }
 

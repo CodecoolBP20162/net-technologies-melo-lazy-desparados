@@ -61,8 +61,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DatabaseHandler.cs" />
     <Compile Include="Folder.cs" />
     <Compile Include="MediaLocatorContext.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Picture.cs" />
     <Compile Include="Playlist.cs" />
     <Compile Include="Video.cs" />
