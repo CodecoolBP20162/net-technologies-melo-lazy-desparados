@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MediaLocator_MediaFiles.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MediaLocator_MediaFilesStoreContainer">
+    <EntitySet Name="AudioSet" EntityType="MediaLocator_MediaFiles.Store.AudioSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VideoSet" EntityType="MediaLocator_MediaFiles.Store.VideoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PictureSet" EntityType="MediaLocator_MediaFiles.Store.PictureSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FolderSet" EntityType="MediaLocator_MediaFiles.Store.FolderSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PlaylistSet" EntityType="MediaLocator_MediaFiles.Store.PlaylistSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FolderAudio" Association="MediaLocator_MediaFiles.Store.FolderAudio">
+      <End Role="Folder" EntitySet="FolderSet" />
+      <End Role="Audio" EntitySet="AudioSet" />
+    </AssociationSet>
+    <AssociationSet Name="FolderVideo" Association="MediaLocator_MediaFiles.Store.FolderVideo">
+      <End Role="Folder" EntitySet="FolderSet" />
+      <End Role="Video" EntitySet="VideoSet" />
+    </AssociationSet>
+    <AssociationSet Name="FolderPicture" Association="MediaLocator_MediaFiles.Store.FolderPicture">
+      <End Role="Folder" EntitySet="FolderSet" />
+      <End Role="Picture" EntitySet="PictureSet" />
+    </AssociationSet>
+    <AssociationSet Name="PlaylistAudio" Association="MediaLocator_MediaFiles.Store.PlaylistAudio">
+      <End Role="Playlist" EntitySet="PlaylistSet" />
+      <End Role="Audio" EntitySet="AudioSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AudioSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Path" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Size" Type="bigint" Nullable="false" />
+    <Property Name="Long" Type="bigint" Nullable="false" />
+    <Property Name="SaveDate" Type="datetime" Nullable="false" />
+    <Property Name="Folder_Id" Type="int" Nullable="false" />
+    <Property Name="Playlist_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VideoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Path" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Size" Type="bigint" Nullable="false" />
+    <Property Name="Long" Type="bigint" Nullable="false" />
+    <Property Name="SaveDate" Type="datetime" Nullable="false" />
+    <Property Name="Folder_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PictureSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Path" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Size" Type="bigint" Nullable="false" />
+    <Property Name="SaveDate" Type="datetime" Nullable="false" />
+    <Property Name="Folder_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FolderSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Path" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PlaylistSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Path" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FolderAudio">
+    <End Role="Folder" Type="MediaLocator_MediaFiles.Store.FolderSet" Multiplicity="1" />
+    <End Role="Audio" Type="MediaLocator_MediaFiles.Store.AudioSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Folder">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Audio">
+        <PropertyRef Name="Folder_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FolderVideo">
+    <End Role="Folder" Type="MediaLocator_MediaFiles.Store.FolderSet" Multiplicity="1" />
+    <End Role="Video" Type="MediaLocator_MediaFiles.Store.VideoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Folder">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Video">
+        <PropertyRef Name="Folder_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FolderPicture">
+    <End Role="Folder" Type="MediaLocator_MediaFiles.Store.FolderSet" Multiplicity="1" />
+    <End Role="Picture" Type="MediaLocator_MediaFiles.Store.PictureSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Folder">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Picture">
+        <PropertyRef Name="Folder_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlaylistAudio">
+    <End Role="Playlist" Type="MediaLocator_MediaFiles.Store.PlaylistSet" Multiplicity="1" />
+    <End Role="Audio" Type="MediaLocator_MediaFiles.Store.AudioSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Playlist">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Audio">
+        <PropertyRef Name="Playlist_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="MediaLocator_MediaFiles" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="MediaLocator_MediaFilesContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AudioSet" EntityType="MediaLocator_MediaFiles.Audio" />
+          <EntitySet Name="VideoSet" EntityType="MediaLocator_MediaFiles.Video" />
+          <EntitySet Name="PictureSet" EntityType="MediaLocator_MediaFiles.Picture" />
+          <EntitySet Name="FolderSet" EntityType="MediaLocator_MediaFiles.Folder" />
+          <AssociationSet Name="FolderAudio" Association="MediaLocator_MediaFiles.FolderAudio">
+            <End Role="Folder" EntitySet="FolderSet" />
+            <End Role="Audio" EntitySet="AudioSet" />
+          </AssociationSet>
+          <AssociationSet Name="FolderVideo" Association="MediaLocator_MediaFiles.FolderVideo">
+            <End Role="Folder" EntitySet="FolderSet" />
+            <End Role="Video" EntitySet="VideoSet" />
+          </AssociationSet>
+          <AssociationSet Name="FolderPicture" Association="MediaLocator_MediaFiles.FolderPicture">
+            <End Role="Folder" EntitySet="FolderSet" />
+            <End Role="Picture" EntitySet="PictureSet" />
+          </AssociationSet>
+          <EntitySet Name="PlaylistSet" EntityType="MediaLocator_MediaFiles.Playlist" />
+          <AssociationSet Name="PlaylistAudio" Association="MediaLocator_MediaFiles.PlaylistAudio">
+            <End Role="Playlist" EntitySet="PlaylistSet" />
+            <End Role="Audio" EntitySet="AudioSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Audio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Path" Type="String" Nullable="false" />
+          <Property Name="Size" Type="Int64" Nullable="false" />
+          <Property Name="Long" Type="Int64" Nullable="false" />
+          <Property Name="SaveDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Folder" Relationship="MediaLocator_MediaFiles.FolderAudio" FromRole="Audio" ToRole="Folder" />
+          <NavigationProperty Name="Playlist" Relationship="MediaLocator_MediaFiles.PlaylistAudio" FromRole="Audio" ToRole="Playlist" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Path" Type="String" Nullable="false" />
+          <Property Name="Size" Type="Int64" Nullable="false" />
+          <Property Name="Long" Type="Int64" Nullable="false" />
+          <Property Name="SaveDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Folder" Relationship="MediaLocator_MediaFiles.FolderVideo" FromRole="Video" ToRole="Folder" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Path" Type="String" Nullable="false" />
+          <Property Name="Size" Type="Int64" Nullable="false" />
+          <Property Name="SaveDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Folder" Relationship="MediaLocator_MediaFiles.FolderPicture" FromRole="Picture" ToRole="Folder" />
+        </EntityType>
+        <EntityType Name="Folder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Path" Type="String" Nullable="false" />
+          <NavigationProperty Name="Audio" Relationship="MediaLocator_MediaFiles.FolderAudio" FromRole="Folder" ToRole="Audio" />
+          <NavigationProperty Name="Video" Relationship="MediaLocator_MediaFiles.FolderVideo" FromRole="Folder" ToRole="Video" />
+          <NavigationProperty Name="Picture" Relationship="MediaLocator_MediaFiles.FolderPicture" FromRole="Folder" ToRole="Picture" />
+        </EntityType>
+        <Association Name="FolderAudio">
+          <End Type="MediaLocator_MediaFiles.Folder" Role="Folder" Multiplicity="1" />
+          <End Type="MediaLocator_MediaFiles.Audio" Role="Audio" Multiplicity="*" />
+        </Association>
+        <Association Name="FolderVideo">
+          <End Type="MediaLocator_MediaFiles.Folder" Role="Folder" Multiplicity="1" />
+          <End Type="MediaLocator_MediaFiles.Video" Role="Video" Multiplicity="*" />
+        </Association>
+        <Association Name="FolderPicture">
+          <End Type="MediaLocator_MediaFiles.Folder" Role="Folder" Multiplicity="1" />
+          <End Type="MediaLocator_MediaFiles.Picture" Role="Picture" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Playlist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Path" Type="String" Nullable="false" />
+          <NavigationProperty Name="Audio" Relationship="MediaLocator_MediaFiles.PlaylistAudio" FromRole="Playlist" ToRole="Audio" />
+        </EntityType>
+        <Association Name="PlaylistAudio">
+          <End Type="MediaLocator_MediaFiles.Playlist" Role="Playlist" Multiplicity="1" />
+          <End Type="MediaLocator_MediaFiles.Audio" Role="Audio" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MediaLocator_MediaFilesStoreContainer" CdmEntityContainer="MediaLocator_MediaFilesContainer">
+    <EntitySetMapping Name="AudioSet">
+      <EntityTypeMapping TypeName="IsTypeOf(MediaLocator_MediaFiles.Audio)">
+        <MappingFragment StoreEntitySet="AudioSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Long" ColumnName="Long" />
+          <ScalarProperty Name="SaveDate" ColumnName="SaveDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VideoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(MediaLocator_MediaFiles.Video)">
+        <MappingFragment StoreEntitySet="VideoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Long" ColumnName="Long" />
+          <ScalarProperty Name="SaveDate" ColumnName="SaveDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PictureSet">
+      <EntityTypeMapping TypeName="IsTypeOf(MediaLocator_MediaFiles.Picture)">
+        <MappingFragment StoreEntitySet="PictureSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="SaveDate" ColumnName="SaveDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FolderSet">
+      <EntityTypeMapping TypeName="IsTypeOf(MediaLocator_MediaFiles.Folder)">
+        <MappingFragment StoreEntitySet="FolderSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlaylistSet">
+      <EntityTypeMapping TypeName="IsTypeOf(MediaLocator_MediaFiles.Playlist)">
+        <MappingFragment StoreEntitySet="PlaylistSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FolderAudio" TypeName="MediaLocator_MediaFiles.FolderAudio" StoreEntitySet="AudioSet">
+      <EndProperty Name="Folder">
+        <ScalarProperty Name="Id" ColumnName="Folder_Id" />
+      </EndProperty>
+      <EndProperty Name="Audio">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FolderVideo" TypeName="MediaLocator_MediaFiles.FolderVideo" StoreEntitySet="VideoSet">
+      <EndProperty Name="Folder">
+        <ScalarProperty Name="Id" ColumnName="Folder_Id" />
+      </EndProperty>
+      <EndProperty Name="Video">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FolderPicture" TypeName="MediaLocator_MediaFiles.FolderPicture" StoreEntitySet="PictureSet">
+      <EndProperty Name="Folder">
+        <ScalarProperty Name="Id" ColumnName="Folder_Id" />
+      </EndProperty>
+      <EndProperty Name="Picture">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PlaylistAudio" TypeName="MediaLocator_MediaFiles.PlaylistAudio" StoreEntitySet="AudioSet">
+      <EndProperty Name="Playlist">
+        <ScalarProperty Name="Id" ColumnName="Playlist_Id" />
+      </EndProperty>
+      <EndProperty Name="Audio">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
