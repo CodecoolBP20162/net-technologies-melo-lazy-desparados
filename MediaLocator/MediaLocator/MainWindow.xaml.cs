@@ -174,5 +174,12 @@ namespace meLo
             mediaSlider.Maximum = ts.TotalSeconds;
             timer.Start();
         }
+
+        private void btnLoad_Click(object sender, RoutedEventArgs e)
+        {
+            DatabaseHandler dbHandler = new DatabaseHandler();
+            List<Folder> folderList = dbHandler.LoadFoldersFromDatabase();
+            DirectoryPathTextBox.Text = folderList[0].FolderPath;
+        }
     }
 }

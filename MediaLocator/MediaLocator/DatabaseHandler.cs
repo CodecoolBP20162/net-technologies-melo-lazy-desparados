@@ -46,5 +46,11 @@ namespace MediaLocator
 
         }
 
+        public List<Folder> LoadFoldersFromDatabase()
+        {
+            var folders1 = db.Folders.ToList();
+            return folders1;
+        }
+
     } 
 }
