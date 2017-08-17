@@ -15,8 +15,6 @@ namespace MediaLocator
         public int AudioID { get; set; }
         public string FileName { get; set; }
         public string FilePath { get; set; }
-        public decimal Long { get; set; }
-        public decimal Size { get; set; }
 
         public virtual Folder Folder { get; set; }
         public virtual Playlist PLaylist { get; set; }

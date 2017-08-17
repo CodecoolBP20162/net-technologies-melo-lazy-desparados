@@ -30,7 +30,6 @@ namespace meLo
         {
             InitializeComponent();
             CreateImagesForButtons();
-            DatabaseHandler.AddToDatabase();
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(500);
             timer.Tick += new EventHandler(timer_Tick);
@@ -82,6 +81,14 @@ namespace meLo
             DirectoryInfo temporaryDirInfo = new  DirectoryInfo(DirectoryPathTextBox.Text);
             FileManager.recursiveFileSearch(temporaryDirInfo);
             CreateListBoxItemsForFiles();
+
+            DatabaseHandler dbHandler = new DatabaseHandler();
+            Folder currentFolder = dbHandler.AddFolderToDatabase(temporaryDirInfo.Name, DirectoryPathTextBox.Text);
+            foreach (FileInfo file in FileManager.jpgList)
+            {
+                dbHandler.AddFilesToDatabase(file.Name, file.FullName, currentFolder);
+            }
+            
         }
 
         private void CreateListBoxItemsForFiles()

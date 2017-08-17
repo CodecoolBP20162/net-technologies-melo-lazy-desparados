@@ -9,16 +9,42 @@ namespace MediaLocator
 {
     class DatabaseHandler
     {
-        public static void AddToDatabase()
+        MedialocatorContext db = new MedialocatorContext();
+
+        public Folder AddFolderToDatabase( String folderName, String folderPath)
         {
-            using (var db = new MedialocatorContext())
+         
+            var folder = new Folder { FolderName = folderName, FolderPath = folderPath};
+            db.Folders.Add(folder);
+            db.SaveChanges();
+
+            return folder;
+        }
+
+        public void AddFilesToDatabase (string fileName, string filePath, Folder folder)
+        {
+            if (filePath.Contains("jpg"))
             {
-                var Folder = new Folder { FolderName = "folder1", FolderPath = @"C:\" };
-                var audio = new Audio { FileName = "test1.mp3" };
-                db.Folders.Add(Folder);
-                db.Audios.Add(audio);
+                var pictureFile = new Picture { FileName = fileName, FilePath = filePath, Folder = folder };
+                db.Pictures.Add(pictureFile);
                 db.SaveChanges();
             }
+
+            if (filePath.Contains("mp3"))
+            {
+                var audioFile = new Audio { FileName = fileName, FilePath = filePath, Folder = folder };
+                db.Audios.Add(audioFile);
+                db.SaveChanges();
+            }
+
+            if (filePath.Contains("mp4"))
+            {
+                var videoFile = new Video { FileName = fileName, FilePath = filePath, Folder = folder };
+                db.Videos.Add(videoFile);
+                db.SaveChanges();
+            }
+
         }
-    }
+
+    } 
 }

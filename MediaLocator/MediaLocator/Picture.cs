@@ -15,11 +15,7 @@ namespace MediaLocator
         public int PictureID { get; set; }
         public string FileName { get; set; }
         public string FilePath { get; set; }
-        public DateTime? SavedAt { get; set; }
-        public byte[] Photo { get; set; }
-        public decimal Size { get; set; }
-
-
+    
         public virtual Folder Folder { get; set; }       
     }
 }
