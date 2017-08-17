@@ -82,10 +82,10 @@ namespace meLo
             FileManager.recursiveFileSearch(temporaryDirInfo);
             CreateListBoxItemsForFiles();
 
-            //CreateListBoxItemForFolders(); 
+            CreateListBoxItemForFolders(); 
         }
 
-        /*private void CreateListBoxItemForFolders()
+        private void CreateListBoxItemForFolders()
         {
             List<string> folders = new List<string>();
             folders.Add(DirectoryPathTextBox.Text);
@@ -94,10 +94,9 @@ namespace meLo
             {
                 ListBoxItem listBoxItem = new ListBoxItem();
                 listBoxItem.Content = item;
-
                 FolderBox.Items.Add(listBoxItem);
             }
-        }*/
+        }
 
         private void CreateListBoxItemsForFiles()
         {
