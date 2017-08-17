@@ -84,7 +84,7 @@ namespace meLo
 
             DatabaseHandler dbHandler = new DatabaseHandler();
             Folder currentFolder = dbHandler.AddFolderToDatabase(temporaryDirInfo.Name, DirectoryPathTextBox.Text);
-            foreach (FileInfo file in FileManager.jpgList)
+            foreach (FileInfo file in temporaryDirInfo.GetFiles())
             {
                 dbHandler.AddFilesToDatabase(file.Name, file.FullName, currentFolder);
             }
