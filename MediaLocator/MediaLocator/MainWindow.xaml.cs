@@ -128,7 +128,15 @@ namespace meLo
             }
         }
 
-      
+        private void FolderBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
+            if (FolderBox.SelectedItem != null)
+            {
+                CreateListBoxItemsForFiles();
+            }
+        }
+
         private void btnStop1_Click(object sender, RoutedEventArgs e)
         {
             mediaPlayer.Stop();
@@ -194,6 +202,11 @@ namespace meLo
             PictureView pv = new PictureView();
             pv.imagebox.Source = new BitmapImage(new Uri(ofd.FileName));
             pv.ShowDialog();
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            FolderViewBox.Items.Clear();
         }
     }
 }
