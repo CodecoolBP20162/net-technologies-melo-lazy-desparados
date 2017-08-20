@@ -1,0 +1,29 @@
+<Window x:Class="meLo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:meLo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="690.46" Width="1295.74">
+    <Grid Margin="0,0,2,1">
+        <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Left" Height="304" Margin="10,60,0,0" VerticalAlignment="Top" Width="535" LoadedBehavior="Manual" MediaOpened="mediaPlayer_MediaOpened" OpacityMask="#FFE64747"/>
+        <Slider x:Name="mediaSlider" HorizontalAlignment="Left" Margin="10,381,0,0" VerticalAlignment="Top" Width="542" Height="48" ValueChanged="mediaSlider_ValueChanged"/>
+        <Slider x:Name="Volume" HorizontalAlignment="Left" Margin="428,482,0,0" VerticalAlignment="Top" Width="124" ValueChanged="slider_vol_ValueChanged"/>
+        <Label x:Name="VolumeLabel" Content="Volume" HorizontalAlignment="Left" Margin="344,471,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.466,-0.279" Width="83" FontSize="20" Background="{x:Null}" Foreground="#FFB2F1FF"/>
+        <Button x:Name="btnPlay1"  HorizontalAlignment="Left" Margin="179,447,0,0" VerticalAlignment="Top" Width="75" Height="62" Click="btnPlay1_Click" Background="#FF6AFFF8">
+        </Button>
+        <Button  x:Name="btnPause1" HorizontalAlignment="Left" Margin="264,471,0,0" VerticalAlignment="Top" Width="51" Height="38" Click="btnPause1_Click" Background="#FF6AFFF8">
+        </Button>
+        <Button  x:Name="btnStop1" HorizontalAlignment="Left" Margin="118,472,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="1.471,2.555" Height="37" Click="btnStop1_Click" Background="#FF6AFFF8">
+        </Button>
+        <Button  x:Name="btnFolder1" HorizontalAlignment="Left" Margin="21,473,0,0" VerticalAlignment="Top" Width="52" Height="36" Click="btnFolder1_Click" Background="#FF6AFFF8">
+        </Button>
+        <TextBox x:Name="DirectoryPathTextBox" HorizontalAlignment="Left" Height="23" Margin="788,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287" Background="#FF68F3F9"/>
+        <ListBox x:Name="FolderViewBox" HorizontalAlignment="Left" Height="304" Margin="788,60,0,0" VerticalAlignment="Top" Width="287" Background="#FF68F3F9"/>
+        <Button x:Name="UpdateFolderBtn" Content="Update" HorizontalAlignment="Left" Margin="1108,10,0,0" VerticalAlignment="Top" Width="75" Click="UpdateFolderBtn_Click" Background="#FF6AFFF8" />
+        <Button x:Name="btnOpenPic" Content="Picture" HorizontalAlignment="Left" Margin="1108,60,0,0" VerticalAlignment="Top" Width="75" Click="btnOpenPic_Click" Background="#FF6AFFF8"/>
+        <ListBox x:Name="FolderBox" HorizontalAlignment="Left" Height="220" Margin="788,411,0,0" VerticalAlignment="Top" Width="287" MouseDoubleClick="FolderBox_MouseDoubleClick" Background="#FF68F3F9"/>
+        <Button x:Name="Clear" Content="Clear" HorizontalAlignment="Left" Margin="1108,111,0,0" VerticalAlignment="Top" Width="75" Click="Clear_Click" Background="#FF6AFFF8"/>
+    </Grid>
+</Window>
