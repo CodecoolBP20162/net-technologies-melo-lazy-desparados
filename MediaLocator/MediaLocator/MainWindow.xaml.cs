@@ -1,6 +1,4 @@
 using Microsoft.Win32;
-using FileWatcher;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -18,6 +16,8 @@ using System.Windows.Shapes;
 using System.Reflection;
 using System.Windows.Threading;
 using MediaLocator;
+using System;
+
 
 namespace meLo
 {
@@ -34,6 +34,7 @@ namespace meLo
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(500);
             timer.Tick += new EventHandler(timer_Tick);
+
         }
 
        private void CreateImagesForButtons()
@@ -82,6 +83,13 @@ namespace meLo
             FileManager.recursiveFileSearch(temporaryDirInfo);
             CreateListBoxItemsForFiles();
 
+            DatabaseHandler dbHandler = new DatabaseHandler();
+            Folder currentFolder = dbHandler.AddFolderToDatabase(temporaryDirInfo.Name, DirectoryPathTextBox.Text);
+            foreach (FileInfo file in temporaryDirInfo.GetFiles())
+            {
+                dbHandler.AddFilesToDatabase(file.Name, file.FullName, currentFolder);
+            }
+          
             CreateListBoxItemForFolders(); 
         }
 
@@ -190,6 +198,31 @@ namespace meLo
             timer.Start();
         }
 
+        private void btnLoad_Click(object sender, RoutedEventArgs e)
+        {
+            DatabaseHandler dbHandler = new DatabaseHandler();
+            List<Folder> folderList = dbHandler.LoadFoldersFromDatabase(DirectoryPathTextBox.Text);
+            foreach (Picture pictureFile in folderList[0].Pictures)
+            {
+                ListBoxItem listBoxItem = new ListBoxItem();
+                listBoxItem.Content = pictureFile.FileName;
+                FolderViewBox.Items.Add(listBoxItem);
+            }
+
+            foreach (Audio audioFile in folderList[0].Audios)
+            {
+                ListBoxItem listBoxItem = new ListBoxItem();
+                listBoxItem.Content = audioFile.FileName;
+                FolderViewBox.Items.Add(listBoxItem);
+            }
+
+            foreach (Video videoFile in folderList[0].Videos)
+            {
+                ListBoxItem listBoxItem = new ListBoxItem();
+                listBoxItem.Content = videoFile.FileName;
+                FolderViewBox.Items.Add(listBoxItem);
+            }
+          
         private void btnOpenPic_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd;

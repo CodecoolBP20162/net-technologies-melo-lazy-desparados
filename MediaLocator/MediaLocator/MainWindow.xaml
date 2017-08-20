@@ -28,6 +28,6 @@
         <Button x:Name="btnOpenPic" Content="Picture" HorizontalAlignment="Left" Margin="1108,60,0,0" VerticalAlignment="Top" Width="75" Click="btnOpenPic_Click" Background="#FF6AFFF8"/>
         <ListBox x:Name="FolderBox" HorizontalAlignment="Left" Height="220" Margin="788,411,0,0" VerticalAlignment="Top" Width="287" MouseDoubleClick="FolderBox_MouseDoubleClick" Background="#FF68F3F9"/>
         <Button x:Name="Clear" Content="Clear" HorizontalAlignment="Left" Margin="1108,111,0,0" VerticalAlignment="Top" Width="75" Click="Clear_Click" Background="#FF6AFFF8"/>
-
+        <Button x:Name="btnLoad" Content="Load Test" HorizontalAlignment="Left" Margin="1108,60,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.74,0.023" Click="btnLoad_Click"/>
     </Grid>
 </Window>
