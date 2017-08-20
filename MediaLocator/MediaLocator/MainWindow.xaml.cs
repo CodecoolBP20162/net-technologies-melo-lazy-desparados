@@ -196,14 +196,18 @@ namespace meLo
             string directoryPath = System.IO.Path.GetDirectoryName(fullPath);
             DirectoryPathTextBox.Text = directoryPath;
 
+            if (ofd.FileName.Contains("mp3") ||
+                ofd.FileName.Contains("mp4") ||
+                ofd.FileName.Contains("wmv"))
+            {
+                try { mediaPlayer.Source = new Uri(ofd.FileName); }
+                catch { new NullReferenceException("error"); }
 
-            try { mediaPlayer.Source = new Uri(ofd.FileName); }
-            catch { new NullReferenceException("error"); }
-
-            System.Windows.Threading.DispatcherTimer dispatchertimer = new System.Windows.Threading.DispatcherTimer();
-            dispatchertimer.Tick += new EventHandler(timer_Tick);
-            dispatchertimer.Interval = new TimeSpan(0, 0, 1);
-            dispatchertimer.Start();
+                System.Windows.Threading.DispatcherTimer dispatchertimer = new System.Windows.Threading.DispatcherTimer();
+                dispatchertimer.Tick += new EventHandler(timer_Tick);
+                dispatchertimer.Interval = new TimeSpan(0, 0, 1);
+                dispatchertimer.Start();
+            }           
         }
         void timer_Tick(object sender, EventArgs e)
         {
