@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace MediaLocator
 {
@@ -46,10 +47,15 @@ namespace MediaLocator
 
         }
 
-        public List<Folder> LoadFoldersFromDatabase()
+        public List<Folder> LoadFoldersFromDatabase(string path)
         {
-            var folders1 = db.Folders.ToList();
-            return folders1;
+            var folder = db.Folders
+                                .Where(b => b.FolderPath == path)
+                                .Include("Audios")
+                                .Include("Videos")
+                                .Include("Pictures")
+                                .ToList();
+            return folder;
         }
 
     } 

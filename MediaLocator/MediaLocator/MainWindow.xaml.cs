@@ -178,8 +178,27 @@ namespace meLo
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
             DatabaseHandler dbHandler = new DatabaseHandler();
-            List<Folder> folderList = dbHandler.LoadFoldersFromDatabase();
-            DirectoryPathTextBox.Text = folderList[0].FolderPath;
+            List<Folder> folderList = dbHandler.LoadFoldersFromDatabase(DirectoryPathTextBox.Text);
+            foreach (Picture pictureFile in folderList[0].Pictures)
+            {
+                ListBoxItem listBoxItem = new ListBoxItem();
+                listBoxItem.Content = pictureFile.FileName;
+                FolderViewBox.Items.Add(listBoxItem);
+            }
+
+            foreach (Audio audioFile in folderList[0].Audios)
+            {
+                ListBoxItem listBoxItem = new ListBoxItem();
+                listBoxItem.Content = audioFile.FileName;
+                FolderViewBox.Items.Add(listBoxItem);
+            }
+
+            foreach (Video videoFile in folderList[0].Videos)
+            {
+                ListBoxItem listBoxItem = new ListBoxItem();
+                listBoxItem.Content = videoFile.FileName;
+                FolderViewBox.Items.Add(listBoxItem);
+            }
         }
     }
 }
