@@ -6,9 +6,6 @@
         xmlns:local="clr-namespace:meLo"
         mc:Ignorable="d"
         Title="MainWindow" Height="690.46" Width="1295.74">
-    <Window.Background>
-        <ImageBrush ImageSource="C:\Users\Szilniczky\Documents\Visual Studio 2017\Projects\Media Locator\net-technologies-melo-lazy-desparados\pictures\headphones.jpg"/>
-    </Window.Background>
     <Grid Margin="0,0,2,1">
         <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Left" Height="304" Margin="10,60,0,0" VerticalAlignment="Top" Width="535" LoadedBehavior="Manual" MediaOpened="mediaPlayer_MediaOpened" OpacityMask="#FFE64747"/>
         <Slider x:Name="mediaSlider" HorizontalAlignment="Left" Margin="10,381,0,0" VerticalAlignment="Top" Width="542" Height="48" ValueChanged="mediaSlider_ValueChanged"/>
@@ -28,6 +25,5 @@
         <Button x:Name="btnOpenPic" Content="Picture" HorizontalAlignment="Left" Margin="1108,60,0,0" VerticalAlignment="Top" Width="75" Click="btnOpenPic_Click" Background="#FF6AFFF8"/>
         <ListBox x:Name="FolderBox" HorizontalAlignment="Left" Height="220" Margin="788,411,0,0" VerticalAlignment="Top" Width="287" MouseDoubleClick="FolderBox_MouseDoubleClick" Background="#FF68F3F9"/>
         <Button x:Name="Clear" Content="Clear" HorizontalAlignment="Left" Margin="1108,111,0,0" VerticalAlignment="Top" Width="75" Click="Clear_Click" Background="#FF6AFFF8"/>
-        <Button x:Name="btnLoad" Content="Load Test" HorizontalAlignment="Left" Margin="1108,60,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.74,0.023" Click="btnLoad_Click"/>
     </Grid>
 </Window>

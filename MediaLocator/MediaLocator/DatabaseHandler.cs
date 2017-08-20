@@ -31,6 +31,13 @@ namespace MediaLocator
                 db.SaveChanges();
             }
 
+            if (filePath.Contains("png"))
+            {
+                var pictureFile = new Picture { FileName = fileName, FilePath = filePath, Folder = folder };
+                db.Pictures.Add(pictureFile);
+                db.SaveChanges();
+            }
+
             if (filePath.Contains("mp3"))
             {
                 var audioFile = new Audio { FileName = fileName, FilePath = filePath, Folder = folder };

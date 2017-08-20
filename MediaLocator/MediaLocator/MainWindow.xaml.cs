@@ -31,6 +31,11 @@ namespace meLo
         {
             InitializeComponent();
             CreateImagesForButtons();
+            string pathBackground = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"..\..\pictures\headphones.jpg");
+            this.Background = new ImageBrush
+            {
+                ImageSource = new BitmapImage(new Uri(pathBackground))
+            };
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(500);
             timer.Tick += new EventHandler(timer_Tick);
@@ -62,7 +67,8 @@ namespace meLo
             {
                 Source = new BitmapImage(new Uri(pathFolder))
             };
-        }
+
+          }
 
 
         private void btnPlay1_Click(object sender, RoutedEventArgs e)
@@ -138,10 +144,33 @@ namespace meLo
 
         private void FolderBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            
+            FolderViewBox.Items.Clear();
+
             if (FolderBox.SelectedItem != null)
             {
-                CreateListBoxItemsForFiles();
+                DatabaseHandler db = new DatabaseHandler();
+                List<Folder> folderList = db.LoadFoldersFromDatabase(((ListBoxItem)FolderBox.SelectedValue).Content.ToString());
+
+                foreach (Picture pictureFile in folderList[0].Pictures)
+                {
+                    ListBoxItem listBoxItem = new ListBoxItem();
+                    listBoxItem.Content = pictureFile.FileName;
+                    FolderViewBox.Items.Add(listBoxItem);
+                }
+
+                foreach (Audio audioFile in folderList[0].Audios)
+                {
+                    ListBoxItem listBoxItem = new ListBoxItem();
+                    listBoxItem.Content = audioFile.FileName;
+                    FolderViewBox.Items.Add(listBoxItem);
+                }
+
+                foreach (Video videoFile in folderList[0].Videos)
+                {
+                    ListBoxItem listBoxItem = new ListBoxItem();
+                    listBoxItem.Content = videoFile.FileName;
+                    FolderViewBox.Items.Add(listBoxItem);
+                }
             }
         }
 
@@ -198,31 +227,7 @@ namespace meLo
             timer.Start();
         }
 
-        private void btnLoad_Click(object sender, RoutedEventArgs e)
-        {
-            DatabaseHandler dbHandler = new DatabaseHandler();
-            List<Folder> folderList = dbHandler.LoadFoldersFromDatabase(DirectoryPathTextBox.Text);
-            foreach (Picture pictureFile in folderList[0].Pictures)
-            {
-                ListBoxItem listBoxItem = new ListBoxItem();
-                listBoxItem.Content = pictureFile.FileName;
-                FolderViewBox.Items.Add(listBoxItem);
-            }
-
-            foreach (Audio audioFile in folderList[0].Audios)
-            {
-                ListBoxItem listBoxItem = new ListBoxItem();
-                listBoxItem.Content = audioFile.FileName;
-                FolderViewBox.Items.Add(listBoxItem);
-            }
-
-            foreach (Video videoFile in folderList[0].Videos)
-            {
-                ListBoxItem listBoxItem = new ListBoxItem();
-                listBoxItem.Content = videoFile.FileName;
-                FolderViewBox.Items.Add(listBoxItem);
-            }
-          
+ 
         private void btnOpenPic_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd;
