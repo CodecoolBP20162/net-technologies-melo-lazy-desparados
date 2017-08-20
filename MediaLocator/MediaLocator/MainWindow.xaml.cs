@@ -18,6 +18,7 @@ using System.Windows.Threading;
 using MediaLocator;
 using System;
 
+
 namespace meLo
 {
     /// <summary>
@@ -88,7 +89,21 @@ namespace meLo
             {
                 dbHandler.AddFilesToDatabase(file.Name, file.FullName, currentFolder);
             }
-            
+          
+            CreateListBoxItemForFolders(); 
+        }
+
+        private void CreateListBoxItemForFolders()
+        {
+            List<string> folders = new List<string>();
+            folders.Add(DirectoryPathTextBox.Text);
+
+            foreach (var item in folders)
+            {
+                ListBoxItem listBoxItem = new ListBoxItem();
+                listBoxItem.Content = item;
+                FolderBox.Items.Add(listBoxItem);
+            }
         }
 
         private void CreateListBoxItemsForFiles()
@@ -121,7 +136,15 @@ namespace meLo
             }
         }
 
-      
+        private void FolderBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
+            if (FolderBox.SelectedItem != null)
+            {
+                CreateListBoxItemsForFiles();
+            }
+        }
+
         private void btnStop1_Click(object sender, RoutedEventArgs e)
         {
             mediaPlayer.Stop();
@@ -199,6 +222,24 @@ namespace meLo
                 listBoxItem.Content = videoFile.FileName;
                 FolderViewBox.Items.Add(listBoxItem);
             }
+          
+        private void btnOpenPic_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd;
+            ofd = new OpenFileDialog();
+            ofd.AddExtension = true;
+            ofd.DefaultExt = "*.*";
+            ofd.Filter = "Media Files (*.*)|*.*";
+            ofd.ShowDialog();
+
+            PictureView pv = new PictureView();
+            pv.imagebox.Source = new BitmapImage(new Uri(ofd.FileName));
+            pv.ShowDialog();
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            FolderViewBox.Items.Clear();
         }
     }
 }
