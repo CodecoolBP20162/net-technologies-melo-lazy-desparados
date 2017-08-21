@@ -65,6 +65,7 @@ namespace MediaLocator
             return folder;
         }
 
+
         public static bool CheckDataBaseFolder(string folderName, string folderPath, MedialocatorContext db)
         {
           var folder = db.Folders
@@ -77,6 +78,42 @@ namespace MediaLocator
             {
                 return true;
             } else { return false; }
+        }
+
+        public static bool CheckDataBaseFile(string fileName, MedialocatorContext db)
+        {
+            if (fileName.Contains("mp3"))
+            {
+                var file = db.Audios
+                       .Where(b => b.FilePath == fileName)
+                       .FirstOrDefault();
+                if (file == null)
+                {
+                    return false;
+                }
+                else { return true; }
+            } else if (fileName.Contains("mp4"))
+            {
+                var file = db.Videos
+                       .Where(b => b.FilePath == fileName)
+                       .FirstOrDefault();
+                if (file == null)
+                {
+                    return false;
+                }
+                else { return true; }
+            }
+            else {
+                var file = db.Pictures
+                    .Where(b => b.FilePath == fileName)
+                    .FirstOrDefault();
+                if (file == null)
+                {
+                    return false;
+                }
+                else { return true; }
+            }
+   
         }
     } 
 }

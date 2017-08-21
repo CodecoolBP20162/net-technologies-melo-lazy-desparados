@@ -122,6 +122,8 @@ namespace meLo
             {
                 ListBoxItem listBoxItem = new ListBoxItem();
                 listBoxItem.Content = filinfo.Name;
+                listBoxItem.Name = filinfo.FullName;                
+                listBoxItem.MouseDoubleClick += listboxItemClicked;
 
                 FolderViewBox.Items.Add(listBoxItem);
             }
@@ -129,20 +131,63 @@ namespace meLo
             {
                 ListBoxItem listBoxItem = new ListBoxItem();
                 listBoxItem.Content = filinfo.Name;
+                listBoxItem.Name = filinfo.FullName;
+                listBoxItem.MouseDoubleClick += listboxItemClicked;
                 FolderViewBox.Items.Add(listBoxItem);
             }
             foreach (FileInfo filinfo in FileManager.jpgList)
             {
                 ListBoxItem listBoxItem = new ListBoxItem();
                 listBoxItem.Content = filinfo.Name;
-
+                listBoxItem.Name = filinfo.FullName;
+                listBoxItem.MouseDoubleClick += listboxItemClicked;
                 FolderViewBox.Items.Add(listBoxItem);
             }
             foreach (FileInfo filinfo in FileManager.jpegList)
             {
                 ListBoxItem listBoxItem = new ListBoxItem();
                 listBoxItem.Content = filinfo.Name;
+                listBoxItem.Name = filinfo.FullName;
+                listBoxItem.MouseDoubleClick += listboxItemClicked;
                 FolderViewBox.Items.Add(listBoxItem);
+            }
+        }
+
+        private void listboxItemClicked(object sender, MouseButtonEventArgs e)
+        {
+            
+            var listBoxItem = sender as ListBoxItem;
+            string filePath = (string)listBoxItem.Name;
+            var db = new MedialocatorContext();
+
+            if (DatabaseHandler.CheckDataBaseFile(filePath, new MedialocatorContext()))
+            {
+                if (filePath.Contains("mp3"))
+                {
+                    var file = db.Audios
+                           .Where(b => b.FilePath == filePath)
+                           .FirstOrDefault();
+                    var playList = new Playlist { PLaylistName = "newPlayList" };
+                    playList.Audios.Add(file);
+                    db.Playlists.Add(playList);
+                    db.SaveChanges();
+                }
+                else if (filePath.Contains("mp4"))
+                {
+                    var file = db.Videos
+                           .Where(b => b.FilePath == filePath)
+                           .FirstOrDefault();
+                    
+                }
+                else
+                {
+                    var file = db.Pictures
+                        .Where(b => b.FilePath == filePath)
+                        .FirstOrDefault();
+                    
+                }
+
+                
             }
         }
 
