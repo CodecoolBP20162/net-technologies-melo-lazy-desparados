@@ -46,5 +46,50 @@ namespace meLo
             }
             
         }
+
+        public static void recursiveFileAdding(DirectoryInfo actualDirectory, MediaLocator.MedialocatorContext db)
+        {            
+            var folder = new MediaLocator.Folder { FolderName = actualDirectory.Name, FolderPath = actualDirectory.FullName };
+            db.Folders.Add(folder);
+            foreach (FileInfo fileinfo in actualDirectory.GetFiles())
+            {
+                if (fileinfo.FullName.Contains("mp3") && !mp3List.Contains(fileinfo))
+                {                
+                    var audioFile = new MediaLocator.Audio { FileName = fileinfo.Name, FilePath = fileinfo.FullName, Folder = folder };
+                    db.Audios.Add(audioFile);
+                    db.SaveChanges();
+                }
+                else if (fileinfo.FullName.Contains("mp4") && !mp4List.Contains(fileinfo))
+                {                   
+                    var videoFile = new MediaLocator.Video { FileName = fileinfo.Name, FilePath = fileinfo.FullName, Folder = folder };
+                    db.Videos.Add(videoFile);
+                    db.SaveChanges();
+                }
+                else if (fileinfo.FullName.Contains("jpg") && !jpgList.Contains(fileinfo))
+                {
+                    var jpgFile = new MediaLocator.Picture { FileName = fileinfo.Name, FilePath = fileinfo.FullName, Folder = folder };
+                    db.Pictures.Add(jpgFile);
+                    db.SaveChanges();
+                }
+                else if (fileinfo.FullName.Contains("jpeg") && !jpegList.Contains(fileinfo))
+                {
+                    var jpegFile = new MediaLocator.Picture { FileName = fileinfo.Name, FilePath = fileinfo.FullName, Folder = folder };
+                    db.Pictures.Add(jpegFile);
+                    db.SaveChanges();
+                }
+                else if (fileinfo.FullName.Contains("png") && !pngList.Contains(fileinfo))
+                {
+                    var pngFile = new MediaLocator.Picture { FileName = fileinfo.Name, FilePath = fileinfo.FullName, Folder = folder };
+                    db.Pictures.Add(pngFile);
+                    db.SaveChanges();
+                }
+            }
+            foreach (DirectoryInfo subdirectoryinfo in actualDirectory.GetDirectories())
+            {
+                recursiveFileAdding(subdirectoryinfo, db);
+            }
+
+        }
     }
 }
+

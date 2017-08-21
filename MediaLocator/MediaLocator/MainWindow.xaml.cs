@@ -90,11 +90,15 @@ namespace meLo
             CreateListBoxItemsForFiles();
 
             DatabaseHandler dbHandler = new DatabaseHandler();
-            Folder currentFolder = dbHandler.AddFolderToDatabase(temporaryDirInfo.Name, DirectoryPathTextBox.Text);
-            foreach (FileInfo file in temporaryDirInfo.GetFiles())
+            if (MediaLocator.DatabaseHandler.CheckDataBaseFolder(temporaryDirInfo.Name, temporaryDirInfo.FullName, new MedialocatorContext()))
             {
-                dbHandler.AddFilesToDatabase(file.Name, file.FullName, currentFolder);
+                FileManager.recursiveFileAdding(temporaryDirInfo, new MedialocatorContext());
             }
+            //Folder currentFolder = dbHandler.AddFolderToDatabase(temporaryDirInfo.Name, DirectoryPathTextBox.Text);
+            //foreach (FileInfo file in temporaryDirInfo.GetFiles())
+            //{
+            //    dbHandler.AddFilesToDatabase(file.Name, file.FullName, currentFolder);
+            //}
           
             CreateListBoxItemForFolders(); 
         }
@@ -200,7 +204,8 @@ namespace meLo
                 ofd.FileName.Contains("mp4") ||
                 ofd.FileName.Contains("wmv"))
             {
-                try { mediaPlayer.Source = new Uri(ofd.FileName); }
+                try { mediaPlayer.Source = new Uri(ofd.FileName);                   
+                    }
                 catch { new NullReferenceException("error"); }
 
                 System.Windows.Threading.DispatcherTimer dispatchertimer = new System.Windows.Threading.DispatcherTimer();

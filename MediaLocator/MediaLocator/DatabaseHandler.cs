@@ -65,5 +65,18 @@ namespace MediaLocator
             return folder;
         }
 
+        public static bool CheckDataBaseFolder(string folderName, string folderPath, MedialocatorContext db)
+        {
+          var folder = db.Folders
+                     .Where(b => b.FolderName == folderName)
+                     .FirstOrDefault();
+          var folder2 = db.Folders
+                       .Where(b => b.FolderPath == folderPath)
+                       .FirstOrDefault();
+          if(folder == null && folder2 == null)
+            {
+                return true;
+            } else { return false; }
+        }
     } 
 }
