@@ -12,17 +12,17 @@ namespace MediaLocator
     {
         MedialocatorContext db = new MedialocatorContext();
 
-        public Folder AddFolderToDatabase( String folderName, String folderPath)
+        public Folder AddFolderToDatabase(String folderName, String folderPath)
         {
-         
-            var folder = new Folder { FolderName = folderName, FolderPath = folderPath};
+
+            var folder = new Folder { FolderName = folderName, FolderPath = folderPath };
             db.Folders.Add(folder);
             db.SaveChanges();
 
             return folder;
         }
 
-        public void AddFilesToDatabase (string fileName, string filePath, Folder folder)
+        public void AddFilesToDatabase(string fileName, string filePath, Folder folder)
         {
             if (filePath.Contains("jpg"))
             {
@@ -68,13 +68,13 @@ namespace MediaLocator
 
         public static bool CheckDataBaseFolder(string folderName, string folderPath, MedialocatorContext db)
         {
-          var folder = db.Folders
-                     .Where(b => b.FolderName == folderName)
-                     .FirstOrDefault();
-          var folder2 = db.Folders
-                       .Where(b => b.FolderPath == folderPath)
+            var folder = db.Folders
+                       .Where(b => b.FolderName == folderName)
                        .FirstOrDefault();
-          if(folder == null && folder2 == null)
+            var folder2 = db.Folders
+                         .Where(b => b.FolderPath == folderPath)
+                         .FirstOrDefault();
+            if (folder == null && folder2 == null)
             {
                 return true;
             } else { return false; }
@@ -82,38 +82,38 @@ namespace MediaLocator
 
         public static bool CheckDataBaseFile(string fileName, MedialocatorContext db)
         {
-            if (fileName.Contains("mp3"))
+            //if (fileName.Contains("mp3"))
+            //{
+            var file = db.Audios
+                   .Where(b => b.FileName == fileName)
+                   .FirstOrDefault();
+            if (file == null)
             {
-                var file = db.Audios
-                       .Where(b => b.FilePath == fileName)
-                       .FirstOrDefault();
-                if (file == null)
-                {
-                    return false;
-                }
-                else { return true; }
-            } else if (fileName.Contains("mp4"))
-            {
-                var file = db.Videos
-                       .Where(b => b.FilePath == fileName)
-                       .FirstOrDefault();
-                if (file == null)
-                {
-                    return false;
-                }
-                else { return true; }
+                return false;
             }
-            else {
-                var file = db.Pictures
-                    .Where(b => b.FilePath == fileName)
-                    .FirstOrDefault();
-                if (file == null)
-                {
-                    return false;
-                }
-                else { return true; }
-            }
-   
+            else { return true; }
+            //} else if (fileName.Contains("mp4"))
+            //{
+            //    var file = db.Videos
+            //           .Where(b => b.FilePath == fileName)
+            //           .FirstOrDefault();
+            //    if (file == null)
+            //    {
+            //        return false;
+            //    }
+            //    else { return true; }
+            //}
+            //else {
+            //    var file = db.Pictures
+            //        .Where(b => b.FilePath == fileName)
+            //        .FirstOrDefault();
+            //    if (file == null)
+            //    {
+            //        return false;
+            //    }
+            //    else { return true; }
+        
+    
         }
     } 
 }
